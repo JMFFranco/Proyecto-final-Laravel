@@ -1,0 +1,25 @@
+<?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class StoreComputerRequest extends FormRequest
+{
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    public function rules(): array
+    {
+        return [
+            'computer_brand' => 'required|string|max:255',
+            'computer_model' => 'required|string|max:255',
+            'computer_price' => 'required|numeric|min:0',
+            'computer_ram_size' => 'nullable|integer|min:1',
+            'computer_is_laptop' => 'boolean',
+            'fk_category_computer' => 'nullable|exists:categories,category_id',
+        ];
+    }
+}

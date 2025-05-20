@@ -15,9 +15,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(1)->create();
+        //User::factory(1)->create();
+
+        //Seeder de categorias
+        Category::truncate();
         $categories = Category::factory(5)->create();
-        Computer::factory(20)
+
+        //Seeder de computadores
+        Computer::truncate();
+        Computer::factory(10)
             ->create()
             ->each(function ($computer) use ($categories) {
                 $computer->fk_category_computer = $categories->random()->category_id;

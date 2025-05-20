@@ -17,9 +17,9 @@ class UpdateComputerRequest extends FormRequest
             'computer_brand' => 'sometimes|required|string|max:255',
             'computer_model' => 'sometimes|required|string|max:255',
             'computer_price' => 'sometimes|required|numeric|min:0',
-            'computer_ram_size' => 'nullable|integer|min:1',
-            'computer_is_laptop' => 'boolean',
-            'fk_category_computer' => 'nullable|exists:categories,category_id',
+            'computer_ram_size' => 'sometimes|integer',
+            'computer_is_laptop' => 'required|boolean',
+            'fk_category_computer' => 'required|exists:categories,category_id',
         ];
     }
 }

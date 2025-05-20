@@ -16,7 +16,7 @@ class UpdateCategoryRequest extends FormRequest
         return [
             'category_name' => 'sometimes|required|string|max:255',
             'category_description' => 'sometimes|required|string',
-            'category_priority' => 'sometimes|required|integer|min:1',
+            'category_priority' => 'sometimes|required|integer|min:1|max:10',
         ];
     }
 }

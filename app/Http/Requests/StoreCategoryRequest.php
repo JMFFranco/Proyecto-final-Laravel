@@ -16,7 +16,7 @@ class StoreCategoryRequest extends FormRequest
         return [
             'category_name' => 'required|string|max:255',
             'category_description' => 'required|string',
-            'category_priority' => 'required|integer|min:1',
+            'category_priority' => 'required|integer|min:1|max:10',
         ];
     }
 }

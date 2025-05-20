@@ -1,7 +1,8 @@
 <script setup>
 import { Head, Link } from "@inertiajs/vue3";
+import { computed, ref } from "vue";
 
-defineProps({
+const props = defineProps({
     computers: Array,
     categories: Array,
     message: String,
@@ -21,13 +22,23 @@ defineProps({
     },
 });
 
+const selectedComputer = ref("");
+
+const filteredComputers = computed(() => {
+    if (!selectedComputer.value) {
+        return props.computers;
+    }
+    return props.computers.filter(
+        (category) => category.fk_category_computer == selectedComputer.value
+    );
+});
+
 function handleImageError() {
     document.getElementById("screenshot-container")?.classList.add("!hidden");
     document.getElementById("docs-card")?.classList.add("!row-span-1");
     document.getElementById("docs-card-content")?.classList.add("!flex-row");
     document.getElementById("background")?.classList.add("!hidden");
 }
-
 </script>
 
 <template>
@@ -64,7 +75,7 @@ function handleImageError() {
                             :href="route('computers.index')"
                             class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
                         >
-                            Computadores
+                            Panel de control
                         </Link>
 
                         <template v-else>
@@ -90,7 +101,7 @@ function handleImageError() {
                     <div class="py-12">
                         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                             <!-- Category Filter -->
-                            <!-- <div class="mb-4 flex items-center">
+                            <div class="mb-4 flex items-center">
                                 <label
                                     for="category-filter"
                                     class="mr-2 text-gray-700 dark:text-gray-300"
@@ -106,13 +117,13 @@ function handleImageError() {
                                     </option>
                                     <option
                                         v-for="category in categories"
-                                        :key="category.slug"
-                                        :value="category.slug"
+                                        :key="category.category_id"
+                                        :value="category.category_id"
                                     >
                                         {{ category.category_name }}
                                     </option>
                                 </select>
-                            </div> -->
+                            </div>
 
                             <!-- Flash Message -->
                             <div
@@ -130,7 +141,7 @@ function handleImageError() {
                             >
                                 <div class="p-6">
                                     <div
-                                        v-if="computers.length === 0"
+                                        v-if="filteredComputers.length === 0"
                                         class="text-center py-4 text-gray-600 dark:text-gray-400"
                                     >
                                         No hay computadores.
@@ -179,12 +190,12 @@ function handleImageError() {
                                                     >
                                                         Laptop
                                                     </th>
-                                                    <!-- <th
+                                                    <th
                                                         scope="col"
                                                         class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider"
                                                     >
                                                         Categoria
-                                                    </th> -->
+                                                    </th>
                                                     <th
                                                         scope="col"
                                                         class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider"
@@ -197,7 +208,7 @@ function handleImageError() {
                                                 class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700"
                                             >
                                                 <tr
-                                                    v-for="Computer in computers"
+                                                    v-for="Computer in filteredComputers"
                                                     :key="Computer.slug"
                                                 >
                                                     <td
@@ -244,14 +255,14 @@ function handleImageError() {
                                                                 : "No"
                                                         }}
                                                     </td>
-                                                    <!-- <td
+                                                    <td
                                                         class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400"
                                                     >
                                                         {{
                                                             Computer.category
                                                                 ?.category_name
                                                         }}
-                                                    </td> -->
+                                                    </td>
                                                     <td
                                                         class="px-6 py-4 whitespace-nowrap text-sm font-medium"
                                                     >

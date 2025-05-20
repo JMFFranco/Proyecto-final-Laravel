@@ -29,7 +29,7 @@ class ComputerController extends Controller
     public function create()
     {
         return Inertia::render('Computers/Create', [
-            'Computers' => Computer::all(),
+            'categories' => Category::all(),
             'selectedComputer' => request('category_id')
         ]);
     }
@@ -73,6 +73,8 @@ class ComputerController extends Controller
     {
         $computer->update($request->validated());
 
+/*         return redirect()->route('computers.index')
+            ->with('message', 'Computador actualizado correctamente.'); */
         return redirect()->route('computers.index')
             ->with('message', 'Computador actualizado correctamente.');
     }

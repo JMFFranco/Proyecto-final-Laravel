@@ -12,23 +12,23 @@ const props = defineProps({
     message: String,
 });
 
-const selectedComputer = ref("");
+const selectedCategory = ref("");
 const showDeleteModal = ref(false);
 const computerToDelete = ref(null);
 
 const filteredComputers = computed(() => {
-    if (!selectedComputer.value) {
+    if (!selectedCategory.value) {
         return props.computers;
     }
     return props.computers.filter(
-        (category) => category.fk_category_computer == selectedComputer.value
+        (category) => category.fk_category_computer == selectedCategory.value
     );
 });
 
 const createComputerLink = computed(() => {
     const baseUrl = route("computers.create");
-    return selectedComputer.value
-        ? `${baseUrl}?slug=${selectedComputer.value}`
+    return selectedCategory.value
+        ? `${baseUrl}?computer_id=${selectedCategory.value}`
         : baseUrl;
 });
 
@@ -83,14 +83,14 @@ const deleteComputer = () => {
                     >
                     <select
                         id="category-filter"
-                        v-model="selectedComputer"
+                        v-model="selectedCategory"
                         class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm"
                     >
                         <option value="">Todas las categorias</option>
                         <option
                             v-for="category in categories"
-                            :key="category.slug"
-                            :value="category.slug"
+                            :key="category.category_id"
+                            :value="category.category_id"
                         >
                             {{ category.category_name }}
                         </option>
@@ -233,7 +233,7 @@ const deleteComputer = () => {
                                                     "
                                                     class="text-indigo-600 hover:text-indigo-900"
                                                 >
-                                                    View
+                                                    Ver
                                                 </Link>
                                             </div>
                                             <div>
@@ -246,7 +246,7 @@ const deleteComputer = () => {
                                                     "
                                                     class="text-blue-600 hover:text-blue-900"
                                                 >
-                                                    Edit
+                                                    Editar
                                                 </Link>
                                             </div>
                                             <div>
@@ -256,7 +256,7 @@ const deleteComputer = () => {
                                                     "
                                                     class="text-red-600 dark:text-red-400 hover:text-red-900 dark:hover:text-red-300"
                                                 >
-                                                    Delete
+                                                    Eliminar
                                                 </button>
                                             </div>
                                         </td>

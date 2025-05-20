@@ -19,7 +19,6 @@ class Computer extends Model
         "computer_price",
         "computer_ram_size",
         "computer_is_laptop",
-        "computer_barcode",
         "fk_category_computer"
     ];
 

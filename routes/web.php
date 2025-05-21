@@ -7,13 +7,13 @@ use App\Models\Computer;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-use App\Http\Controllers\CorreoController;
+
 
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
-        'categories' => Category::all(),
-        'computers' => Computer::all(),
+        'categories' => Category::orderBy('category_name', 'asc')->get(),
+        'computers' => Computer::with('category')->orderBy('computer_id', 'asc')->get(),
         'message' => session('message'),
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
@@ -27,9 +27,9 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/computers', function () {
+    Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
-    })->name('computers');
+    })->name('dashboard');
 
     Route::resource('categories', CategoryController::class);
     Route::resource('computers', ComputerController::class);

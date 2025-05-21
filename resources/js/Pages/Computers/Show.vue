@@ -91,7 +91,7 @@ const props = defineProps({
                                     <p
                                         class="mt-1 text-sm text-gray-900 dark:text-white"
                                     >
-                                        {{ computer.computer_price }}
+                                        ${{ computer.computer_price }}
                                     </p>
                                 </div>
 

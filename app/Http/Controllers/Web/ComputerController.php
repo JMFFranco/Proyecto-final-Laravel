@@ -17,8 +17,8 @@ class ComputerController extends Controller
     public function index()
     {
         return Inertia::render('Computers/Index', [
-            'computers' => Computer::with('category')->get(),
-            'categories' => Category::all(),
+            'categories' => Category::orderBy('category_name', 'asc')->get(),
+            'computers' => Computer::with('category')->orderBy('computer_id', 'asc')->get(),
             'message' => session('message')
         ]);
     }
@@ -73,8 +73,6 @@ class ComputerController extends Controller
     {
         $computer->update($request->validated());
 
-/*         return redirect()->route('computers.index')
-            ->with('message', 'Computador actualizado correctamente.'); */
         return redirect()->route('computers.index')
             ->with('message', 'Computador actualizado correctamente.');
     }

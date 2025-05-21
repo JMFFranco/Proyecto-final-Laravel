@@ -1,19 +1,40 @@
 <script setup>
-import AppLayout from '@/Layouts/AppLayout.vue';
-import Welcome from '@/Components/Welcome.vue';
+import AppLayout from "@/Layouts/AppLayout.vue";
+import Welcome from "@/Components/Welcome.vue";
+import { Head, Link } from "@inertiajs/vue3";
 </script>
 
 <template>
-    <AppLayout title="Dashboard">
+    <AppLayout title="Compu-Commerce">
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                Dashboard
-            </h2>
+            <div class="flex justify-between items-center">
+                <h2
+                    class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight"
+                >
+                    Compu-Commerce
+                </h2>
+                <div class="flex gap-2">
+                    <Link
+                        :href="route('categories.index')"
+                        class="px-4 py-2 bg-gray-800 dark:bg-gray-700 text-white rounded-md hover:bg-gray-700 dark:hover:bg-gray-600"
+                    >
+                        Ir a categorias
+                    </Link>
+                    <Link
+                        :href="route('computers.index')"
+                        class="px-4 py-2 bg-gray-800 dark:bg-gray-700 text-white rounded-md hover:bg-gray-700 dark:hover:bg-gray-600"
+                    >
+                        Ir a computadores
+                    </Link>
+                </div>
+            </div>
         </template>
 
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
+                <div
+                    class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg"
+                >
                     <Welcome />
                 </div>
             </div>

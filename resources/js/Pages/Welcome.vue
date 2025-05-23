@@ -2,6 +2,16 @@
 import { Head, Link } from "@inertiajs/vue3";
 import { computed, ref } from "vue";
 
+import { router } from '@inertiajs/vue3'
+
+const comprar = (id) => {
+    router.post(route('computers.purchase', id), {}, {
+        onSuccess: () => {
+            alert('Gracias por su compra. El correo ha sido enviado.');
+        },
+    });
+}
+
 const props = defineProps({
     computers: Array,
     categories: Array,
@@ -266,9 +276,20 @@ function handleImageError() {
                                                         class="px-6 py-4 whitespace-nowrap text-sm font-medium"
                                                     >
                                                         <div>
+                                                            <!-- <Link
+                                                                href="#"
+                                                                class="text-green-600 hover:text-green-900"
+                                                            >
+                                                                Comprar
+                                                            </Link> -->
                                                             <Link
                                                                 href="#"
                                                                 class="text-green-600 hover:text-green-900"
+                                                                @click.prevent="
+                                                                    comprar(
+                                                                        Computer.slug
+                                                                    )
+                                                                "
                                                             >
                                                                 Comprar
                                                             </Link>

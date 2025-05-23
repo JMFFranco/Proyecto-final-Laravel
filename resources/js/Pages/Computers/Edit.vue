@@ -51,7 +51,7 @@ const submit = () => {
                     class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg"
                 >
                     <div class="p-6">
-                        <form @submit.prcomputer="submit">
+                        <form @submit.prevent="submit">
                             <div class="mb-4">
                                 <InputLabel
                                     for="computer_brand"
@@ -193,5 +193,6 @@ const submit = () => {
                 </div>
             </div>
         </div>
+
     </AppLayout>
 </template>

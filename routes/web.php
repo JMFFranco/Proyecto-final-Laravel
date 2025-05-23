@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Web\CategoryController;
 use App\Http\Controllers\Web\ComputerController;
+use App\Http\Controllers\PurchaseController;
 use App\Models\Category;
 use App\Models\Computer;
 use Illuminate\Foundation\Application;
@@ -21,6 +22,11 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
+
+Route::post('/computers/{slug}/purchase', [PurchaseController::class, 'sendConfirmationEmail'])
+    ->middleware('auth')
+    ->name('computers.purchase');
+
 
 Route::middleware([
     'auth:sanctum',

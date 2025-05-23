@@ -29,7 +29,7 @@ class ComputerController extends Controller
     public function create()
     {
         return Inertia::render('Computers/Create', [
-            'categories' => Category::all(),
+            'categories' => Category::orderBy('category_name', 'asc')->get(),
             'selectedComputer' => request('category_id')
         ]);
     }
@@ -62,7 +62,7 @@ class ComputerController extends Controller
     {
         return Inertia::render('Computers/Edit', [
             'computer' => $computer,
-            'categories' => Category::all()
+            'categories' => Category::orderBy('category_name', 'asc')->get(),
         ]);
     }
 

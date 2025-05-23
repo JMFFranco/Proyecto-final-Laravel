@@ -20,8 +20,8 @@ class ComputerFactory extends Factory
         return [
             'computer_brand' => $this->faker->randomElement(['Dell', 'HP', 'Lenovo', 'Asus', 'Acer']),
             'computer_model' => $this->faker->unique()->bothify('Model-###??'),
-            'computer_price' => $this->faker->randomFloat(2, 1000, 5000),
-            'computer_ram_size' => $this->faker->randomElement([8, 16, 32, 64, 128]),
+            'computer_price' => $this->faker->randomFloat(2, 1000, 10000),
+            'computer_ram_size' => $this->faker->randomElement([4, 8, 16, 32, 64, 128]),
             'computer_is_laptop' => $this->faker->boolean(60),
             'fk_category_computer' => Category::factory(),
         ];

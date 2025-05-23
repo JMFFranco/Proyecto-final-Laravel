@@ -13,19 +13,29 @@ const props = defineProps({
 const form = useForm({
     computer_brand: "",
     computer_model: "",
-    computer_price: "",
-    computer_ram_size: "",
+    computer_price: null,
+    computer_ram_size: null,
     computer_is_laptop: false,
-    fk_category_computer: props.selectedComputer || "",
+    fk_category_computer: '',
 });
 
 const submit = () => {
-    form.post(route("events.store"));
+    form.post(route("computers.store"), {
+        onSuccess: () => {
+            console.log("Computadora creada correctamente");
+        },
+        onError: (errors) => {
+            console.error("Errores de validación:", errors);
+        },
+        onFinish: () => {
+            console.log("Petición terminada");
+        },
+    });
 };
 </script>
 
 <template>
-    <Head title="Edit computer" />
+    <Head title="Creat computer" />
 
     <AppLayout>
         <template #header>
@@ -44,13 +54,15 @@ const submit = () => {
             </div>
         </template>
 
+
+
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div
                     class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg"
                 >
                     <div class="p-6">
-                        <form @submit.prcomputer="submit">
+                        <form @submit.prevent="submit">
                             <div class="mb-4">
                                 <InputLabel
                                     for="computer_brand"
@@ -149,13 +161,14 @@ const submit = () => {
                             <div class="mb-4">
                                 <InputLabel
                                     for="fk_category_computer"
-                                    value="Category"
+                                    value="category"
                                     class="dark:text-gray-300"
                                 />
                                 <select
                                     id="fk_category_computer"
                                     class="mt-1 block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm"
                                     v-model="form.fk_category_computer"
+                                    required
                                 >
                                     <option value="">
                                         Seleccione una categoria
@@ -165,9 +178,7 @@ const submit = () => {
                                         :key="category.category_id"
                                         :value="category.category_id"
                                     >
-                                        {{
-                                            category.category_name
-                                        }}
+                                        {{ category.category_name }}
                                         (Descripción:
                                         {{ category.category_description }})
                                     </option>

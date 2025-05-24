@@ -48,12 +48,20 @@ const deleteCategory = () => {
                 >
                     Categorias
                 </h2>
-                <Link
-                    :href="route('categories.create')"
-                    class="px-4 py-2 bg-gray-800 dark:bg-gray-700 text-white rounded-md hover:bg-gray-700 dark:hover:bg-gray-600"
-                >
-                    Crear categoria
-                </Link>
+                <div class="flex gap-2">
+                    <Link
+                        :href="route('categories.create')"
+                        class="px-4 py-2 bg-gray-800 dark:bg-gray-700 text-white rounded-md hover:bg-gray-700 dark:hover:bg-gray-600"
+                    >
+                        Crear categoria
+                    </Link>
+                    <Link
+                        href="/"
+                        class="px-4 py-2 bg-gray-800 dark:bg-gray-700 text-white rounded-md hover:bg-gray-700 dark:hover:bg-gray-600"
+                    >
+                        Tienda
+                    </Link>
+                </div>
             </div>
         </template>
 

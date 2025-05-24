@@ -15,16 +15,22 @@ import { Head, Link } from "@inertiajs/vue3";
                 </h2>
                 <div class="flex gap-2">
                     <Link
-                        :href="route('categories.index')"
-                        class="px-4 py-2 bg-gray-800 dark:bg-gray-700 text-white rounded-md hover:bg-gray-700 dark:hover:bg-gray-600"
-                    >
-                        Ir a categorias
-                    </Link>
-                    <Link
                         :href="route('computers.index')"
                         class="px-4 py-2 bg-gray-800 dark:bg-gray-700 text-white rounded-md hover:bg-gray-700 dark:hover:bg-gray-600"
                     >
-                        Ir a computadores
+                        Computadores
+                    </Link>
+                    <Link
+                        :href="route('categories.index')"
+                        class="px-4 py-2 bg-gray-800 dark:bg-gray-700 text-white rounded-md hover:bg-gray-700 dark:hover:bg-gray-600"
+                    >
+                        Categorias
+                    </Link>
+                    <Link
+                        href="/"
+                        class="px-4 py-2 bg-gray-800 dark:bg-gray-700 text-white rounded-md hover:bg-gray-700 dark:hover:bg-gray-600"
+                    >
+                        Tienda
                     </Link>
                 </div>
             </div>

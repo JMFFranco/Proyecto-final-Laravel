@@ -63,12 +63,20 @@ const deleteComputer = () => {
                 >
                     Computadores
                 </h2>
-                <Link
-                    :href="createComputerLink"
-                    class="px-4 py-2 bg-gray-800 dark:bg-gray-700 text-white rounded-md hover:bg-gray-700 dark:hover:bg-gray-600"
-                >
-                    Crear computador
-                </Link>
+                <div class="flex gap-2">
+                    <Link
+                        :href="createComputerLink"
+                        class="px-4 py-2 bg-gray-800 dark:bg-gray-700 text-white rounded-md hover:bg-gray-700 dark:hover:bg-gray-600"
+                    >
+                        Crear computador
+                    </Link>
+                    <Link
+                        href="/"
+                        class="px-4 py-2 bg-gray-800 dark:bg-gray-700 text-white rounded-md hover:bg-gray-700 dark:hover:bg-gray-600"
+                    >
+                        Tienda
+                    </Link>
+                </div>
             </div>
         </template>
 

@@ -2,15 +2,19 @@
 import { Head, Link } from "@inertiajs/vue3";
 import { computed, ref } from "vue";
 
-import { router } from '@inertiajs/vue3'
+import { router } from "@inertiajs/vue3";
 
 const comprar = (id) => {
-    router.post(route('computers.purchase', id), {}, {
-        onSuccess: () => {
-            alert('Gracias por su compra. El correo ha sido enviado.');
-        },
-    });
-}
+    router.post(
+        route("computers.purchase", id),
+        {},
+        {
+            onSuccess: () => {
+                alert("Gracias por su compra. El correo ha sido enviado.");
+            },
+        }
+    );
+};
 
 const props = defineProps({
     computers: Array,
@@ -81,7 +85,7 @@ function handleImageError() {
                     <nav v-if="canLogin" class="-mx-3 flex flex-1 justify-end">
                         <Link
                             v-if="$page.props.auth.user"
-                            :href="route('computers.index')"
+                            :href="route('dashboard')"
                             class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
                         >
                             Panel de control
@@ -106,11 +110,30 @@ function handleImageError() {
                     </nav>
                 </header>
 
-                <main class="mt-6">
+                <main>
                     <div class="py-12">
                         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                            <!-- Welcome message -->
+                            <div>
+                                <h1
+                                    class="mt-8 text-2xl font-medium text-gray-900 dark:text-white"
+                                >
+                                    ¡Bienvenido a Compu-Commerce!
+                                </h1>
+
+                                <p
+                                    class="mt-6 text-gray-900 dark:text-white leading-relaxed"
+                                >
+                                    Esta es tu plataforma de comercio
+                                    electrónico especializada en la venta de
+                                    computadores. Encuentra todo lo que
+                                    necesitas para mejorar o renovar tu equipo
+                                    tecnológico con productos de calidad y a los
+                                    mejores precios.
+                                </p>
+                            </div>
                             <!-- Category Filter -->
-                            <div class="mb-4 flex items-center">
+                            <div class="mb-4 mt-6 flex items-center">
                                 <label
                                     for="category-filter"
                                     class="mr-2 text-gray-700 dark:text-gray-300"
@@ -308,7 +331,7 @@ function handleImageError() {
                 <footer
                     class="py-16 text-center text-sm text-black dark:text-white/70"
                 >
-                    Laravel v{{ laravelVersion }} (PHP v{{ phpVersion }})
+                    Compu-Commerce - Laravel v{{ laravelVersion }} (PHP v{{ phpVersion }})
                 </footer>
             </div>
         </div>

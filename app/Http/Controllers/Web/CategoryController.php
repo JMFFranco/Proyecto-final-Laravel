@@ -13,8 +13,6 @@ class CategoryController extends Controller
     // Listado de categorías
     public function index()
     {
-        $categories = Category::orderBy('category_priority')->get();
-
         return Inertia::render('Categories/Index', [
             'categories' => Category::orderBy('category_id', 'asc')->get(),
             'message' => session('message'),

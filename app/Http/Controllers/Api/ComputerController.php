@@ -4,9 +4,6 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Computer;
-use App\Models\Category;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\StoreComputerRequest;
 use App\Http\Requests\UpdateComputerRequest;
 
@@ -17,8 +14,7 @@ class ComputerController extends Controller
      */
     public function index()
     {
-        // Puedes usar with('category') si quieres incluir información de la categoría
-        $computers = Computer::with('category')->get();
+        $computers = Computer::with('category')->orderBy('computer_id', 'asc')->get();
         return response()->json($computers);
     }
 

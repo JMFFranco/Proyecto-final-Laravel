@@ -125,6 +125,23 @@ const props = defineProps({
                                     </p>
                                 </div>
 
+                                                                <div>
+                                    <p
+                                        class="text-sm font-medium text-gray-500 dark:text-gray-400"
+                                    >
+                                        ¿Se encuentra disponible el computador?
+                                    </p>
+                                    <p
+                                        class="mt-1 text-sm text-gray-900 dark:text-white"
+                                    >
+                                        {{
+                                            computer.status
+                                                ? "Si"
+                                                : "No"
+                                        }}
+                                    </p>
+                                </div>
+
                                 <div>
                                     <p
                                         class="text-sm font-medium text-gray-500 dark:text-gray-400"

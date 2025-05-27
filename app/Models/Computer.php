@@ -19,7 +19,8 @@ class Computer extends Model
         "computer_price",
         "computer_ram_size",
         "computer_is_laptop",
-        "fk_category_computer"
+        "fk_category_computer",
+        "status"
     ];
 
     public function sluggable(): array

@@ -17,7 +17,7 @@ Route::get('/', function () {
         'computers' => Computer::with('category')->orderBy('computer_id', 'asc')->get(),
         'message' => session('message'),
         'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
+        //'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
@@ -34,7 +34,9 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
+        return Inertia::render('Dashboard', [
+            'canRegister' => Route::has('register'),
+        ]);
     })->name('dashboard');
 
     Route::resource('categories', CategoryController::class);

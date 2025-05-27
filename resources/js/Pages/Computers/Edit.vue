@@ -18,6 +18,7 @@ const form = useForm({
     computer_ram_size: props.computer.computer_ram_size,
     computer_is_laptop: props.computer.computer_is_laptop,
     fk_category_computer: props.computer.fk_category_computer,
+    status: props.computer.status,
 });
 
 const submit = () => {
@@ -147,6 +148,24 @@ const submit = () => {
                                 />
                             </div>
 
+                            <div class="mb-4 flex items-center">
+                                <input
+                                    id="status"
+                                    type="checkbox"
+                                    class="rounded border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600"
+                                    v-model="form.status"
+                                />
+                                <InputLabel
+                                    for="status"
+                                    value="¿Se encuentra disponible el computador?"
+                                    class="ml-2 dark:text-gray-300"
+                                />
+                                <InputError
+                                    class="mt-2"
+                                    :message="form.errors.status"
+                                />
+                            </div>
+
                             <div class="mb-4">
                                 <InputLabel
                                     for="fk_category_computer"
@@ -166,9 +185,7 @@ const submit = () => {
                                         :key="category.category_id"
                                         :value="category.category_id"
                                     >
-                                        {{
-                                            category.category_name
-                                        }}
+                                        {{ category.category_name }}
                                         (Descripción:
                                         {{ category.category_description }})
                                     </option>
@@ -193,6 +210,5 @@ const submit = () => {
                 </div>
             </div>
         </div>
-
     </AppLayout>
 </template>

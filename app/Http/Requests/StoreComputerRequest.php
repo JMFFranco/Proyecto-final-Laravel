@@ -20,6 +20,7 @@ class StoreComputerRequest extends FormRequest
             'computer_ram_size' => 'required|integer',
             'computer_is_laptop' => 'required|boolean',
             'fk_category_computer' => 'required|exists:categories,category_id',
+            'status' => 'required|boolean',
         ];
     }
 }

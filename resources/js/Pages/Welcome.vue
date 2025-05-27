@@ -7,12 +7,12 @@ import { router } from "@inertiajs/vue3";
 const comprar = (id) => {
     router.post(
         route("computers.purchase", id),
-        {},
-        {
+        {}
+        /* {
             onSuccess: () => {
                 alert("Gracias por su compra. El correo ha sido enviado.");
             },
-        }
+        } */
     );
 };
 
@@ -99,13 +99,13 @@ function handleImageError() {
                                 Ingresar
                             </Link>
 
-                            <Link
+                            <!-- <Link
                                 v-if="canRegister"
                                 :href="route('register')"
                                 class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
                             >
                                 Registrarse
-                            </Link>
+                            </Link> -->
                         </template>
                     </nav>
                 </header>
@@ -232,6 +232,12 @@ function handleImageError() {
                                                         scope="col"
                                                         class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider"
                                                     >
+                                                        Disponible
+                                                    </th>
+                                                    <th
+                                                        scope="col"
+                                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider"
+                                                    >
                                                         Acción
                                                     </th>
                                                 </tr>
@@ -296,6 +302,15 @@ function handleImageError() {
                                                         }}
                                                     </td>
                                                     <td
+                                                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400"
+                                                    >
+                                                        {{
+                                                            Computer.status
+                                                                ? "Si"
+                                                                : "No"
+                                                        }}
+                                                    </td>
+                                                    <td
                                                         class="px-6 py-4 whitespace-nowrap text-sm font-medium"
                                                     >
                                                         <div>
@@ -331,7 +346,9 @@ function handleImageError() {
                 <footer
                     class="py-16 text-center text-sm text-black dark:text-white/70"
                 >
-                    Compu-Commerce - Laravel v{{ laravelVersion }} (PHP v{{ phpVersion }})
+                    Compu-Commerce - Laravel v{{ laravelVersion }} (PHP v{{
+                        phpVersion
+                    }})
                 </footer>
             </div>
         </div>

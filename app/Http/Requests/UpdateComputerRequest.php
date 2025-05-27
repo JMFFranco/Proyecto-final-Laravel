@@ -20,6 +20,7 @@ class UpdateComputerRequest extends FormRequest
             'computer_ram_size' => 'sometimes|integer',
             'computer_is_laptop' => 'sometimes|boolean',
             'fk_category_computer' => 'nullable|exists:categories,category_id',
+            'status' => 'sometimes|boolean',
         ];
     }
 }

@@ -24,6 +24,7 @@ class ComputerFactory extends Factory
             'computer_ram_size' => $this->faker->randomElement([4, 8, 16, 32, 64, 128]),
             'computer_is_laptop' => $this->faker->boolean(60),
             'fk_category_computer' => Category::factory(),
+            'status' => $this->faker->boolean(60),
         ];
     }
 }

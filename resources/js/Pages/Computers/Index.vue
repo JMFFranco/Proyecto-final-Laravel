@@ -176,6 +176,12 @@ const deleteComputer = () => {
                                             scope="col"
                                             class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider"
                                         >
+                                            Disponible
+                                        </th>
+                                        <th
+                                            scope="col"
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider"
+                                        >
                                             Acciones
                                         </th>
                                     </tr>
@@ -226,6 +232,15 @@ const deleteComputer = () => {
                                         >
                                             {{
                                                 Computer.category?.category_name
+                                            }}
+                                        </td>
+                                        <td
+                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400"
+                                        >
+                                            {{
+                                                Computer.status
+                                                    ? "Si"
+                                                    : "No"
                                             }}
                                         </td>
                                         <td

@@ -16,7 +16,8 @@ const form = useForm({
     computer_price: null,
     computer_ram_size: null,
     computer_is_laptop: false,
-    fk_category_computer: '',
+    fk_category_computer: "",
+    status: false,
 });
 
 const submit = () => {
@@ -53,8 +54,6 @@ const submit = () => {
                 </Link>
             </div>
         </template>
-
-
 
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -155,6 +154,24 @@ const submit = () => {
                                 <InputError
                                     class="mt-2"
                                     :message="form.errors.computer_is_laptop"
+                                />
+                            </div>
+
+                            <div class="mb-4 flex items-center">
+                                <input
+                                    id="status"
+                                    type="checkbox"
+                                    class="rounded border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600"
+                                    v-model="form.status"
+                                />
+                                <InputLabel
+                                    for="status"
+                                    value="¿Se encuentra disponible el computador?"
+                                    class="ml-2 dark:text-gray-300"
+                                />
+                                <InputError
+                                    class="mt-2"
+                                    :message="form.errors.status"
                                 />
                             </div>
 

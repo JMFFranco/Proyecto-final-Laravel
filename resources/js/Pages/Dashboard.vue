@@ -2,6 +2,12 @@
 import AppLayout from "@/Layouts/AppLayout.vue";
 import Welcome from "@/Components/Welcome.vue";
 import { Head, Link } from "@inertiajs/vue3";
+
+defineProps({
+    canRegister: {
+        type: Boolean,
+    },
+});
 </script>
 
 <template>
@@ -31,6 +37,13 @@ import { Head, Link } from "@inertiajs/vue3";
                         class="px-4 py-2 bg-gray-800 dark:bg-gray-700 text-white rounded-md hover:bg-gray-700 dark:hover:bg-gray-600"
                     >
                         Tienda
+                    </Link>
+                    <Link
+                        v-if="canRegister"
+                        :href="route('register')"
+                        class="px-4 py-2 bg-gray-800 dark:bg-gray-700 text-white rounded-md hover:bg-gray-700 dark:hover:bg-gray-600"
+                    >
+                        Crear usuario
                     </Link>
                 </div>
             </div>
